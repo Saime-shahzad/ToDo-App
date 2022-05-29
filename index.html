@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+</head>
+<body>
+
+    <main>
+        <form action="./index.html " method="post"> 
+        <div class="container">
+            <div class="input-group mb-3 mt-5 ">
+                <input type="text " contenteditable="true" id="edit"  class="form-control" placeholder="Enter Name" required>
+                <button id="add_btn" onclick="check()" class="btn btn-outline-success" type="button" > Add</button>
+            </div>
+
+            <ul id="Parentlist" class="list-group ">
+                <li class="list-group-item d-flex justify-content-between">
+                    <h5 id="edited" contenteditable="true" class="flex-grow-1" onclick="changenamebtn(this)" >Add name</h5>
+                    <button id="change"   class="btn btn-warning mx-3" onclick="editname(this)">Edit</button>
+                    <button class="btn btn-danger " onclick="removename(this)" >Remove</button>
+
+                </li>
+            </ul>
+
+        </div>
+    </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+<script>
+    
+
+
+let getbutton=document.getElementById('add_btn')
+
+getbutton.addEventListener("click", addname)
+let parentlist=document.getElementById("Parentlist")   
+function addname(e){
+  
+    if(empty.className="nothing"){
+      empty.remove()
+    }
+   
+   
+    let grapbutton=e.currentTarget
+    
+
+    let getinput=grapbutton.previousElementSibling
+
+    let inpute=getinput.value
+    
+        
+    
+
+    let newli=document.createElement("li")
+   
+                    newli.textContent=getinput.value
+                    newli.className="list-group-item d-flex justify-content-between" 
+    
+
+                    newli .innerHTML=` <h5 id="edited" class="flex-grow-1" contenteditable="true" onclick="changenamebtn(this)">${inpute}</h5>
+                    <button id="change" class="btn btn-warning mx-3" onclick="editname(this)">Edit</button>
+                    <button class="btn btn-danger" onclick="removename(this)">Remove</button>`
+
+                    let parentlist=document.getElementById("Parentlist")
+                    parentlist.appendChild(newli)
+
+}
+
+        let empty=document.createElement("h3")
+
+        function removename( removeele){
+
+                    removeele.parentElement.remove();
+
+                    if(parentlist.children.length<=0){
+     
+                    empty.classList.add("nothing")
+                    empty.textContent="Empty! Please Add"
+                    parentlist.appendChild(empty)
+    }
+   
+}
+
+
+                let getip=document.getElementById("edited").isContentEditable
+ 
+       
+        if (getip == true) {
+            function editname(editi){
+                editi.innerText="Done"
+}
+ 
+}
+
+                let changed=document.getElementById("change")
+                function changenamebtn(changingname){
+                changingname.nextElementSibling.innerText="+Add"
+}
+
+
+</script>
+
+
+
+
+</body>
+</html>
